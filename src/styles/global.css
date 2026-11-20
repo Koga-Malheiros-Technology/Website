@@ -25,7 +25,11 @@ img {
   height: auto;
 }
 
+/* Todo link é um alvo de toque de pelo menos 44 px (navegação, contato e CTA). */
 a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
   color: var(--cor-acento);
 }
 
@@ -93,9 +97,6 @@ nav ul {
 }
 
 nav a {
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
   padding-inline: 0.75rem;
   text-decoration: none;
   transition: background-color 150ms ease;
