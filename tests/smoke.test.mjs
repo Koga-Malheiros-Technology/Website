@@ -16,3 +16,9 @@ test('build gera HTML com lang pt-BR, main e base de domínio próprio', () => {
   assert.match(config, /site:/);
   assert.ok(cname.length > 0);
 });
+
+test('CNAME usa o domínio definitivo kmtechnology.com.br', () => {
+  const cname = readFileSync(new URL('../public/CNAME', import.meta.url), 'utf8').trim();
+  assert.equal(cname, 'kmtechnology.com.br');
+  assert.doesNotMatch(cname, /\.invalid$/);
+});
