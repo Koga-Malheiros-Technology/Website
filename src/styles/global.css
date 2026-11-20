@@ -82,10 +82,18 @@ header > div {
   gap: 0.5rem;
 }
 
+/* Mobile: logo, tagline, navegação e CTA empilhados em linhas de largura total. */
+header > div,
+nav,
+.cta {
+  flex: 1 1 100%;
+}
+
 header img {
-  width: 64px;
-  height: 64px;
+  width: 56px;
+  height: 56px;
   object-fit: contain;
+  flex: 0 0 auto;
 }
 
 header p {
@@ -218,6 +226,22 @@ footer {
   section > ul {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  /* Desktop: logo maior com o cabeçalho de volta a uma única linha. */
+  header > div,
+  nav,
+  .cta {
+    flex: 0 1 auto;
+  }
+
+  header p {
+    flex: 1 1 auto;
+  }
+
+  header img {
+    width: 72px;
+    height: 72px;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -229,7 +253,7 @@ footer {
 /* Herói: grade sutil desenhada apenas com gradientes lineares. */
 .hero {
   margin-bottom: 1.5rem;
-  padding: clamp(2.5rem, 6vw, 4.5rem) clamp(1.25rem, 4vw, 3rem);
+  padding: clamp(1.75rem, 6vw, 4.5rem) clamp(1rem, 4vw, 3rem);
   border: 1px solid var(--cor-borda);
   border-radius: 0.75rem;
   background-color: var(--cor-superficie);
@@ -241,7 +265,7 @@ footer {
 
 .hero h1 {
   margin: 0 0 0.75rem;
-  font-size: clamp(2rem, 5vw, 3.25rem);
+  font-size: clamp(1.75rem, 8vw, 3.25rem);
   line-height: 1.1;
   color: var(--cor-texto);
 }

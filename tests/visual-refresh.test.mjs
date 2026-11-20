@@ -28,7 +28,8 @@ test('paleta tecnológica e marcadores de acessibilidade', () => {
 });
 
 test('CTA do cabeçalho estilizado como pílula', () => {
-  const cta = css.match(/\.cta\s*\{[^}]*\}/)?.[0];
+  // A regra base do cabeçalho também usa `.cta`; aqui interessa a pílula.
+  const cta = css.match(/\.cta\s*\{[^}]*\}/g)?.find((rule) => rule.includes('padding-inline')) ?? '';
   assert.ok(cta, 'regra .cta ausente');
   assert.match(cta, /padding-inline:\s*1rem/);
   assert.match(cta, /border-radius:\s*999px/);

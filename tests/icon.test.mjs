@@ -31,7 +31,10 @@ test('arquivo da logo PNG está disponível publicamente', () => {
 
 test('logo do cabeçalho é maior e mantém proporção', () => {
   const css = readFileSync(new URL('../src/styles/global.css', import.meta.url), 'utf8');
-  assert.match(css, /header img\s*\{[^}]*width:\s*64px;[^}]*height:\s*64px;[^}]*object-fit:\s*contain/);
+  const rule = css.match(/header img\s*\{[^}]*\}/)?.[0] ?? '';
+  assert.match(rule, /width:\s*56px/);
+  assert.match(rule, /height:\s*56px/);
+  assert.match(rule, /object-fit:\s*contain/);
 });
 
 // O componente é compilado pelo Astro, não importável em Node puro; sem call
