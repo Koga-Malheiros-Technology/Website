@@ -77,12 +77,12 @@ export const site: Site = {
   ],
   projects: [
     {
-      name: 'Recupera',
+      name: 'KM Recupera',
       description:
         'Software de recuperação tributária de ICMS, com módulos da CAT 42 e da CAT 207.',
-      technologies: ['React', 'Material UI', 'Axios'],
+      technologies: ['React', 'Material UI'],
       image: '/images/recupera.png',
-      imageAlt: 'Tela de login do sistema Recupera',
+      imageAlt: 'Tela dos módulos do sistema KM Recupera',
       link: 'https://recupera.kmtechnology.com.br',
     },
   ],
