@@ -1,12 +1,176 @@
 :root {
   --cor-fundo: #ffffff;
   --cor-texto: #1a1a1a;
-  --cor-acento: #0b5fff;
+  --cor-acento: #0b4fa8;
+  --cor-superficie: #f5f7fa;
+  --cor-borda: #d0d7de;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.5;
   background-color: var(--cor-fundo);
   color: var(--cor-texto);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: var(--cor-acento);
+}
+
+/* Navegação por teclado: contorno sempre visível no elemento focado. */
+:focus-visible {
+  outline: 3px solid var(--cor-acento);
+  outline-offset: 2px;
+}
+
+.skip-link {
+  position: absolute;
+  top: 0;
+  left: -10000px;
+  z-index: 1;
+  padding: 0.75rem 1rem;
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto);
+}
+
+.skip-link:focus {
+  left: 0;
+}
+
+/* Container centralizado, compartilhado por cabeçalho, conteúdo e rodapé. */
+header,
+main,
+footer {
+  max-width: 1120px;
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  padding-block: 1rem;
+  border-bottom: 1px solid var(--cor-borda);
+}
+
+header > div {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+header img {
+  width: 40px;
+  height: 40px;
+}
+
+header p {
+  flex: 1 1 100%;
+  margin: 0;
+}
+
+nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding-inline: 0.75rem;
+  text-decoration: none;
+  transition: background-color 150ms ease;
+}
+
+nav a:hover {
+  background-color: var(--cor-superficie);
+}
+
+main {
+  padding-block: 2rem;
+}
+
+section {
+  padding-block: 1.5rem;
+  border-bottom: 1px solid var(--cor-borda);
+}
+
+/* Mobile: uma coluna; telas maiores: grades com múltiplas colunas. */
+section > ul {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+article {
+  padding: 1rem;
+  border: 1px solid var(--cor-borda);
+  border-radius: 0.5rem;
+  background-color: var(--cor-superficie);
+  transition: border-color 150ms ease;
+}
+
+article:hover {
+  border-color: var(--cor-acento);
+}
+
+article h3 {
+  margin-top: 0;
+}
+
+article ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0;
+  padding: 0;
+  list-style: none;
+}
+
+footer {
+  padding-block: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  section > ul {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  section > ul {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+    scroll-behavior: auto !important;
+  }
 }
