@@ -17,17 +17,17 @@ test('sem dados reais, a seção de sistemas não publica conteúdo de exemplo',
   assert.doesNotMatch(html, /Sistema A|Exemplo/);
 });
 
-test('Recupera aparece em Sistemas com print e link', () => {
+test('KM Recupera aparece em Sistemas com print e link', () => {
   const html = readHtml();
   const png = readFileSync(new URL('../public/images/recupera.png', import.meta.url));
   assert.match(html, /id="sistemas"/);
-  assert.match(html, /Recupera/);
+  assert.match(html, /KM Recupera/);
   assert.match(html, /recuperação tributária de ICMS, com módulos da CAT 42 e da CAT 207/);
   assert.match(html, /src="\/images\/recupera.png"/);
-  assert.match(html, /alt="Tela de login do sistema Recupera"/);
+  assert.match(html, /alt="Tela dos módulos do sistema KM Recupera"/);
   assert.match(html, /href="https:\/\/recupera\.kmtechnology\.com\.br"/);
-  for (const tech of ['React', 'Material UI', 'Axios']) assert.ok(html.includes(tech));
+  for (const tech of ['React', 'Material UI']) assert.ok(html.includes(tech));
   assert.deepEqual([...png.subarray(0, 8)], [137, 80, 78, 71, 13, 10, 26, 10]);
-  assert.equal(png.readUInt32BE(16), 1280);
-  assert.equal(png.readUInt32BE(20), 900);
+  assert.equal(png.readUInt32BE(16), 2878);
+  assert.equal(png.readUInt32BE(20), 1800);
 });
