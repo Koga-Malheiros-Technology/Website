@@ -14,7 +14,7 @@ test('contato, rodapé e grades responsivas', () => {
   assert.match(contact, /name="whatsapp"/);
   assert.match(html, /class="site-footer"/);
   assert.match(css, /minmax\(0,\s*1fr\)/);
-  assert.match(css, /@media \(min-width: 768px\)/);
+  assert.match(css, /@media \(min-width: 640px\)/);
   assert.match(css, /\.card\s*\{[^}]*transition:/);
   assert.doesNotMatch(css, /@keyframes/);
 });
