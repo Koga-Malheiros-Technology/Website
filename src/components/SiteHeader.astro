@@ -1,0 +1,19 @@
+---
+import { site } from '../data/site';
+---
+<header>
+  <div>
+    <img src="/logo.svg" alt={`Logo da ${site.company.name}`}>
+    <span>{site.company.name}</span>
+  </div>
+  <p>{site.company.headline}</p>
+  <nav>
+    <ul>
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#valores">Valores</a></li>
+      <li><a href="#servicos">Serviços</a></li>
+      <li><a href="#sistemas">Sistemas</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+  </nav>
+</header>

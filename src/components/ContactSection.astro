@@ -1,0 +1,15 @@
+---
+import { site } from '../data/site';
+const { email, whatsapp } = site.contact;
+---
+<section id="contato">
+  <h2>Contato</h2>
+  {email || whatsapp ? (
+    <p>
+      {email && <a href={`mailto:${email}`}>{email}</a>}
+      {whatsapp && <a href={`https://wa.me/${whatsapp}`}>WhatsApp</a>}
+    </p>
+  ) : (
+    <p>Informações de contato em breve.</p>
+  )}
+</section>

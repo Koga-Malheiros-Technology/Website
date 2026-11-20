@@ -4,10 +4,11 @@ import SectionHeading from '../components/SectionHeading.astro';
 import ServiceCard from '../components/ServiceCard.astro';
 import ValueCard from '../components/ValueCard.astro';
 import ProjectCard from '../components/ProjectCard.astro';
+import ContactSection from '../components/ContactSection.astro';
 import { site } from '../data/site';
 ---
 <BaseLayout>
-  <h1>KM Technology</h1>
+  <h1>{site.company.name}</h1>
   <SectionHeading id="sobre" title="Sobre a empresa">
     <p>{site.company.about}</p>
   </SectionHeading>
@@ -34,4 +35,5 @@ import { site } from '../data/site';
       </ul>
     </SectionHeading>
   )}
+  <ContactSection />
 </BaseLayout>
