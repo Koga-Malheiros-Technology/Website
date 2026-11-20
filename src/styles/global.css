@@ -1,9 +1,14 @@
 :root {
-  --cor-fundo: #ffffff;
-  --cor-texto: #1a1a1a;
-  --cor-acento: #0b4fa8;
-  --cor-superficie: #f5f7fa;
-  --cor-borda: #d0d7de;
+  --cor-fundo: #f8fbff;
+  --cor-texto: #0b1f3a;
+  --cor-texto-suave: #5b6b82;
+  --cor-acento: #2563eb;
+  --cor-ciano: #0e7490;
+  --cor-ciano-vivo: #06b6d4;
+  --cor-superficie: #ffffff;
+  --cor-borda: #dbe7f5;
+  --cor-selo-azul: #e8f0fe;
+  --cor-selo-ciano: #e0f7fb;
 }
 
 *,
