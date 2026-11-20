@@ -33,6 +33,13 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Guard against placeholder domain
+        run: |
+          if grep -qE '\.invalid[[:space:]]*$' public/CNAME; then
+            echo "::error::Substitua o placeholder .invalid em public/CNAME antes de publicar"
+            exit 1
+          fi
+
       - name: Build
         run: npm run build
 

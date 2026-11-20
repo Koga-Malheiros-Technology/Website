@@ -241,10 +241,15 @@ import { readHtml } from './helpers.mjs';
 
 test('sem dados reais, a seção de sistemas não publica conteúdo de exemplo', () => {
   const html = readHtml();
+  const data = readFileSync(new URL('../src/data/site.ts', import.meta.url), 'utf8');
   const page = readFileSync(new URL('../src/pages/index.astro', import.meta.url), 'utf8');
   assert.match(page, /ProjectCard/);
   assert.match(page, /site\.projects\.length/);
-  assert.doesNotMatch(html, /id="sistemas"/);
+  if (/projects:\s*\[\s*\]/.test(data)) {
+    assert.doesNotMatch(html, /id="sistemas"/);
+  } else {
+    assert.match(html, /id="sistemas"/);
+  }
   assert.doesNotMatch(html, /Sistema A|Exemplo/);
 });
 ```
@@ -287,16 +292,38 @@ git add src tests && git commit -m "feat: add data-driven projects section with 
 ```js
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
 import { readHtml } from './helpers.mjs';
 
 test('navegação, logo e contato sem links inválidos', () => {
   const html = readHtml();
+  const data = readFileSync(new URL('../src/data/site.ts', import.meta.url), 'utf8');
+  const email = data.match(/\bemail:\s*(['"])(.*?)\1/)?.[2] ?? '';
+  const whatsapp = data.match(/\bwhatsapp:\s*(['"])(.*?)\1/)?.[2] ?? '';
+
   for (const id of ['sobre', 'valores', 'servicos', 'contato']) {
     assert.match(html, new RegExp(`href="#${id}"`));
   }
   assert.match(html, /src="\/logo\.svg"/);
   assert.match(html, /src="\/logo\.svg"[^>]*alt="[^"]+"/);
-  assert.doesNotMatch(html, /mailto:|wa\.me/);
+
+  if (email) {
+    assert.match(html, /mailto:/);
+  } else {
+    assert.doesNotMatch(html, /mailto:/);
+  }
+
+  if (whatsapp) {
+    assert.match(html, /wa\.me/);
+    const digits = whatsapp.replace(/\D/g, '');
+    assert.ok(
+      html.includes(`https://wa.me/${digits}`),
+      'href do WhatsApp deve conter apenas dígitos',
+    );
+  } else {
+    assert.doesNotMatch(html, /wa\.me/);
+  }
+
   assert.match(html, /id="contato"/);
 });
 ```

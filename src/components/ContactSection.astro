@@ -7,7 +7,7 @@ const { email, whatsapp } = site.contact;
   {email || whatsapp ? (
     <p>
       {email && <a href={`mailto:${email}`}>{email}</a>}
-      {whatsapp && <a href={`https://wa.me/${whatsapp}`}>WhatsApp</a>}
+      {whatsapp && <a href={`https://wa.me/${whatsapp.replace(/\D/g, '')}`}>WhatsApp</a>}
     </p>
   ) : (
     <p>Informações de contato em breve.</p>

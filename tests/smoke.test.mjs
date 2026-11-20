@@ -9,7 +9,8 @@ test('build gera HTML com lang pt-BR, main e base de domínio próprio', () => {
   const cname = readFileSync(new URL('../public/CNAME', import.meta.url), 'utf8').trim();
   assert.match(html, /<html lang="pt-BR">/);
   assert.match(html, /<main/);
-  assert.doesNotMatch(html, /\/KM_SITE\//);
+  assert.doesNotMatch(html, /Koga-Malheiros-Technology/);
+  assert.doesNotMatch(html, /\/Website\//);
   assert.match(config, /base:\s*['"]\/['"]/);
   assert.match(config, /public\/CNAME/);
   assert.match(config, /site:/);
