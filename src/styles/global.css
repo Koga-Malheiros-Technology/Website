@@ -217,6 +217,49 @@ footer {
   color: var(--cor-acento);
 }
 
+/* Cards: barra superior por tipo e selo suave para o ícone de contorno. */
+.card {
+  border-top: 4px solid var(--cor-acento);
+  transition:
+    border-color 150ms ease,
+    box-shadow 150ms ease,
+    transform 150ms ease;
+}
+
+.card--value {
+  border-top-color: var(--cor-ciano-vivo);
+}
+
+.icon-badge {
+  display: inline-flex;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.75rem;
+  border-radius: 0.75rem;
+  background-color: var(--cor-selo-azul);
+  color: var(--cor-acento);
+}
+
+.card--value .icon-badge {
+  background-color: var(--cor-selo-ciano);
+  color: var(--cor-ciano);
+}
+
+.card h3 {
+  margin-bottom: 0.5rem;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px color-mix(in srgb, var(--cor-texto) 12%, transparent);
+}
+
+.card--value:hover {
+  border-color: var(--cor-ciano-vivo);
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

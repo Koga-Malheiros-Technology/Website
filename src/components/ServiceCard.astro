@@ -1,11 +1,23 @@
 ---
+import Icon from './Icon.astro';
+
 interface Props {
   service: { title: string; description: string };
 }
 
 const { service } = Astro.props;
+
+const icons: Record<string, string> = {
+  'Marketing Digital': 'megaphone',
+  Design: 'palette',
+  'Segurança da Informação': 'shield',
+  'Desenvolvimento de Software sob Encomenda': 'code',
+};
+
+const icon = icons[service.title];
 ---
-<article>
+<article class="card card--service">
+  <span class="icon-badge"><Icon name={icon} /></span>
   <h3>{service.title}</h3>
   <p>{service.description}</p>
 </article>

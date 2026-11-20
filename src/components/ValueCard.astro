@@ -1,11 +1,23 @@
 ---
+import Icon from './Icon.astro';
+
 interface Props {
   value: { title: string; description: string };
 }
 
 const { value } = Astro.props;
+
+const icons: Record<string, string> = {
+  Segurança: 'shield',
+  Qualidade: 'check',
+  Transparência: 'eye',
+  Inovação: 'lightbulb',
+};
+
+const icon = icons[value.title];
 ---
-<article>
+<article class="card card--value">
+  <span class="icon-badge"><Icon name={icon} /></span>
   <h3>{value.title}</h3>
   <p>{value.description}</p>
 </article>
