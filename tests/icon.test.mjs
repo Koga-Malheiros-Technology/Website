@@ -4,13 +4,24 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { readHtml } from './helpers.mjs';
 
-test('SVG inline no cabeçalho e CTA de contato', () => {
+test('CTA de contato e logo PNG no cabeçalho', () => {
   const html = readHtml();
-  assert.match(html, /<svg[^>]*data-icon="mark"/);
   assert.match(html, /<svg[^>]*aria-hidden="true"/);
   assert.match(html, /<svg[^>]*stroke-width="1\.75"/);
   assert.match(html, /<a class="cta" href="#contato">Fale conosco<\/a>/);
   assert.match(html, /src="\/logo\.png"[^>]*alt="[^"]+"/);
+});
+
+test('cabeçalho não exibe monograma ao lado da logo', () => {
+  const html = readHtml();
+  const header = html.match(/<header>[\s\S]*?<\/header>/)?.[0] ?? '';
+  assert.doesNotMatch(header, /data-icon="mark"/);
+});
+
+test('rodapé não exibe ícone decorativo', () => {
+  const html = readHtml();
+  const footer = html.match(/<footer[\s\S]*?<\/footer>/)?.[0] ?? '';
+  assert.doesNotMatch(footer, /<svg/);
 });
 
 test('arquivo da logo PNG está disponível publicamente', () => {
@@ -18,9 +29,9 @@ test('arquivo da logo PNG está disponível publicamente', () => {
   assert.deepEqual([...png.subarray(0, 8)], [137, 80, 78, 71, 13, 10, 26, 10]);
 });
 
-test('logo do cabeçalho não é distorcida', () => {
+test('logo do cabeçalho é maior e mantém proporção', () => {
   const css = readFileSync(new URL('../src/styles/global.css', import.meta.url), 'utf8');
-  assert.match(css, /header img\s*\{[^}]*object-fit:\s*contain/);
+  assert.match(css, /header img\s*\{[^}]*width:\s*64px;[^}]*height:\s*64px;[^}]*object-fit:\s*contain/);
 });
 
 // O componente é compilado pelo Astro, não importável em Node puro; sem call

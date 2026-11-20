@@ -83,8 +83,8 @@ header > div {
 }
 
 header img {
-  width: 40px;
-  height: 40px;
+  width: 64px;
+  height: 64px;
   object-fit: contain;
 }
 
@@ -194,22 +194,16 @@ footer {
   padding-block: 1.5rem;
 }
 
-/* Rodapé: monograma decorativo ao lado do crédito. */
+/* Rodapé: crédito alinhado à borda superior. */
 .site-footer {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
   border-top: 1px solid var(--cor-borda);
   color: var(--cor-texto-suave);
 }
 
 .site-footer p {
   margin: 0;
-}
-
-.site-footer svg {
-  flex: 0 0 auto;
-  color: var(--cor-acento);
 }
 
 @media (min-width: 768px) {
