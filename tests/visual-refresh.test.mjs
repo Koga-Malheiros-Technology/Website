@@ -26,3 +26,17 @@ test('paleta tecnológica e marcadores de acessibilidade', () => {
   }
   assert.match(css, /transition:\s*none\s*!important/);
 });
+
+test('CTA do cabeçalho estilizado como pílula', () => {
+  const cta = css.match(/\.cta\s*\{[^}]*\}/)?.[0];
+  assert.ok(cta, 'regra .cta ausente');
+  assert.match(cta, /padding-inline:\s*1rem/);
+  assert.match(cta, /border-radius:\s*999px/);
+  assert.match(cta, /background-color:\s*var\(--cor-acento\)/);
+  assert.match(cta, /color:\s*#fff/);
+  assert.match(cta, /text-decoration:\s*none/);
+  assert.match(cta, /font-weight:\s*600/);
+  assert.match(cta, /transition:\s*background-color/);
+  assert.match(css, /\.cta:hover\s*\{[^}]*background-color:\s*var\(--cor-ciano\)/);
+  assert.match(css, /\.cta:focus-visible\s*\{[^}]*outline-offset:\s*4px/);
+});

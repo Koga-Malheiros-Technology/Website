@@ -111,6 +111,26 @@ nav a:hover {
   background-color: var(--cor-superficie);
 }
 
+/* CTA do cabeçalho: pílula de destaque apontando para #contato. */
+.cta {
+  padding-inline: 1rem;
+  border-radius: 999px;
+  background-color: var(--cor-acento);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 150ms ease;
+}
+
+.cta:hover {
+  background-color: var(--cor-ciano);
+}
+
+/* Mantém o contorno azul de 3px separado do fundo azul da pílula. */
+.cta:focus-visible {
+  outline-offset: 4px;
+}
+
 main {
   padding-block: 2rem;
 }
