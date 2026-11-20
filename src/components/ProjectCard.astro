@@ -17,7 +17,7 @@ const { project } = Astro.props;
   <p>{project.description}</p>
   <ul>
     {project.technologies.map((technology) => (
-      <li>{technology}</li>
+      <li><span class="tech-chip">{technology}</span></li>
     ))}
   </ul>
   {project.link && <a href={project.link}>{project.name}</a>}

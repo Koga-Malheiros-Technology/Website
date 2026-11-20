@@ -1,13 +1,14 @@
 ---
 import { site } from '../data/site';
+import Icon from './Icon.astro';
 const { email, whatsapp } = site.contact;
 ---
 <section id="contato">
   <h2>Contato</h2>
   {email || whatsapp ? (
     <p>
-      {email && <a href={`mailto:${email}`}>{email}</a>}
-      {whatsapp && <a href={`https://wa.me/${whatsapp.replace(/\D/g, '')}`}>WhatsApp</a>}
+      {email && <a href={`mailto:${email}`}><span class="icon-badge"><Icon name="mail" /></span>{email}</a>}
+      {whatsapp && <a href={`https://wa.me/${whatsapp.replace(/\D/g, '')}`}><span class="icon-badge"><Icon name="whatsapp" /></span>WhatsApp</a>}
     </p>
   ) : (
     <p>Informações de contato em breve.</p>

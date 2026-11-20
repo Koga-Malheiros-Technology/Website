@@ -123,7 +123,7 @@ section {
 /* Mobile: uma coluna; telas maiores: grades com múltiplas colunas. */
 section > ul {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr);
   gap: 1rem;
   margin: 0;
   padding: 0;
@@ -155,8 +155,40 @@ article ul {
   list-style: none;
 }
 
+/* Pílulas discretas para as tecnologias de cada projeto. */
+.tech-chip {
+  display: inline-block;
+  max-width: 100%;
+  padding: 0.25rem 0.65rem;
+  border: 1px solid var(--cor-borda);
+  border-radius: 999px;
+  background-color: var(--cor-selo-azul);
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  color: var(--cor-ciano);
+  overflow-wrap: anywhere;
+}
+
 footer {
   padding-block: 1.5rem;
+}
+
+/* Rodapé: monograma decorativo ao lado do crédito. */
+.site-footer {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  border-top: 1px solid var(--cor-borda);
+  color: var(--cor-texto-suave);
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+.site-footer svg {
+  flex: 0 0 auto;
+  color: var(--cor-acento);
 }
 
 @media (min-width: 768px) {
@@ -258,6 +290,19 @@ footer {
 
 .card--value:hover {
   border-color: var(--cor-ciano-vivo);
+}
+
+/* Selos de contato: mesmo padrão dos cards, ajustados ao alinhamento inline do link. */
+#contato a {
+  overflow-wrap: anywhere;
+}
+
+#contato .icon-badge {
+  flex: 0 0 auto;
+  width: 36px;
+  height: 36px;
+  margin: 0 0.75rem 0 0;
+  border-radius: 0.5rem;
 }
 
 @media (prefers-reduced-motion: reduce) {
