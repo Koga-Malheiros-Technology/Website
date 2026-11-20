@@ -1,8 +1,10 @@
 ---
 import { site } from '../data/site';
+import Icon from './Icon.astro';
 ---
 <header>
   <div>
+    <Icon name="mark" />
     <img src="/logo.svg" alt={`Logo da ${site.company.name}`}>
     <span>{site.company.name}</span>
   </div>
@@ -16,4 +18,5 @@ import { site } from '../data/site';
       <li><a href="#contato">Contato</a></li>
     </ul>
   </nav>
+  <a class="cta" href="#contato">Fale conosco</a>
 </header>
