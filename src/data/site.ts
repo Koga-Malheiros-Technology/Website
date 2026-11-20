@@ -13,6 +13,7 @@ export interface Project {
   description: string;
   technologies: string[];
   image?: string;
+  imageAlt?: string;
   link?: string;
 }
 
@@ -74,8 +75,16 @@ export const site: Site = {
       description: 'Sistemas personalizados, construídos para atender necessidades específicas.',
     },
   ],
-  // Formato de uma entrada real (nenhum projeto confirmado ainda):
-  // { name: 'Nome do sistema', description: 'Descrição curta.', technologies: ['Astro', 'TypeScript'], image: '/imagens/sistema.png', link: 'https://exemplo.com' }
-  projects: [],
+  projects: [
+    {
+      name: 'Recupera',
+      description:
+        'Software de recuperação tributária de ICMS, com módulos da CAT 42 e da CAT 207.',
+      technologies: ['React', 'Material UI', 'Axios'],
+      image: '/images/recupera.png',
+      imageAlt: 'Tela de login do sistema Recupera',
+      link: 'https://recupera.kmtechnology.com.br',
+    },
+  ],
   contact: { email: '', whatsapp: '' },
 };
