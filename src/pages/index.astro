@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SectionHeading from '../components/SectionHeading.astro';
+import ServiceCard from '../components/ServiceCard.astro';
 import ValueCard from '../components/ValueCard.astro';
 import { site } from '../data/site';
 ---
@@ -13,6 +14,13 @@ import { site } from '../data/site';
     <ul>
       {site.values.map((value) => (
         <li><ValueCard value={value} /></li>
+      ))}
+    </ul>
+  </SectionHeading>
+  <SectionHeading id="servicos" title="Serviços de tecnologia">
+    <ul>
+      {site.services.map((service) => (
+        <li><ServiceCard service={service} /></li>
       ))}
     </ul>
   </SectionHeading>
