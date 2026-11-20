@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 import ServiceCard from '../components/ServiceCard.astro';
 import ValueCard from '../components/ValueCard.astro';
+import ProjectCard from '../components/ProjectCard.astro';
 import { site } from '../data/site';
 ---
 <BaseLayout>
@@ -24,4 +25,13 @@ import { site } from '../data/site';
       ))}
     </ul>
   </SectionHeading>
+  {site.projects.length > 0 && (
+    <SectionHeading id="sistemas" title="Sistemas já desenvolvidos">
+      <ul>
+        {site.projects.map((project) => (
+          <li><ProjectCard project={project} /></li>
+        ))}
+      </ul>
+    </SectionHeading>
+  )}
 </BaseLayout>
