@@ -12,8 +12,8 @@ test('navegação, logo e contato sem links inválidos', () => {
   for (const id of ['sobre', 'valores', 'servicos', 'contato']) {
     assert.match(html, new RegExp(`href="#${id}"`));
   }
-  assert.match(html, /src="\/logo\.svg"/);
-  assert.match(html, /src="\/logo\.svg"[^>]*alt="[^"]+"/);
+  assert.match(html, /src="\/logo\.png"/);
+  assert.match(html, /src="\/logo\.png"[^>]*alt="[^"]+"/);
 
   if (email) {
     assert.match(html, /mailto:/);
