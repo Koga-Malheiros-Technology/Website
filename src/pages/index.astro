@@ -8,18 +8,22 @@ import ContactSection from '../components/ContactSection.astro';
 import { site } from '../data/site';
 ---
 <BaseLayout>
-  <h1>{site.company.name}</h1>
-  <SectionHeading id="sobre" title="Sobre a empresa">
+  <section class="hero">
+    <h1>{site.company.name}</h1>
+    <p class="hero-lead">{site.company.headline}</p>
+    <span class="hero-accent" aria-hidden="true"></span>
+  </section>
+  <SectionHeading id="sobre" eyebrow="SOBRE" title="Sobre a empresa">
     <p>{site.company.about}</p>
   </SectionHeading>
-  <SectionHeading id="valores" title="Valores">
+  <SectionHeading id="valores" eyebrow="VALORES" title="Valores">
     <ul>
       {site.values.map((value) => (
         <li><ValueCard value={value} /></li>
       ))}
     </ul>
   </SectionHeading>
-  <SectionHeading id="servicos" title="Serviços de tecnologia">
+  <SectionHeading id="servicos" eyebrow="SERVIÇOS" title="Serviços de tecnologia">
     <ul>
       {site.services.map((service) => (
         <li><ServiceCard service={service} /></li>
@@ -27,7 +31,7 @@ import { site } from '../data/site';
     </ul>
   </SectionHeading>
   {site.projects.length > 0 && (
-    <SectionHeading id="sistemas" title="Sistemas já desenvolvidos">
+    <SectionHeading id="sistemas" eyebrow="SISTEMAS" title="Sistemas já desenvolvidos">
       <ul>
         {site.projects.map((project) => (
           <li><ProjectCard project={project} /></li>
