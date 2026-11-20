@@ -248,6 +248,16 @@ footer {
   section > ul {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
+
+  /* Desktop: todos os filhos do cabeçalho cabem em uma única linha. */
+  header {
+    flex-wrap: nowrap;
+  }
+
+  /* A tagline encolhe para que navegação e CTA não quebrem. */
+  header p {
+    min-width: 0;
+  }
 }
 
 /* Herói: grade sutil desenhada apenas com gradientes lineares. */

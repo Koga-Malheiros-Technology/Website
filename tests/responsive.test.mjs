@@ -44,3 +44,11 @@ test('herói usa espaçamento e título fluidos', () => {
   assert.match(hero, /padding:\s*clamp\(1\.75rem,\s*6vw,\s*4\.5rem\)\s+clamp\(1rem,\s*4vw,\s*3rem\)/);
   assert.match(css, /\.hero h1\s*\{[^}]*font-size:\s*clamp\(1\.75rem,\s*8vw,\s*3\.25rem\)/);
 });
+
+test('cabeçalho volta a uma linha no desktop', () => {
+  const start = css.indexOf('@media (min-width: 1024px)');
+  assert.ok(start >= 0, 'breakpoint desktop ausente');
+  const desktop = css.slice(start, start + 400);
+  assert.match(desktop, /header\s*\{[^}]*flex-wrap:\s*nowrap/);
+  assert.match(desktop, /header p\s*\{[^}]*min-width:\s*0/);
+});
