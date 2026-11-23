@@ -206,6 +206,34 @@ article ul {
   overflow-wrap: anywhere;
 }
 
+/* Acesso ao sistema: mesmo padrão de pílula do CTA do cabeçalho. */
+.project-access {
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+  padding-inline: 1rem;
+  border-radius: 999px;
+  background-color: var(--cor-acento);
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 150ms ease;
+}
+
+.project-access:hover {
+  background-color: var(--cor-ciano);
+}
+
+/* Mantém o contorno azul separado do fundo da pílula. */
+.project-access:focus-visible {
+  outline-offset: 4px;
+}
+
+.project-access svg {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 auto;
+}
+
 footer {
   padding-block: 1.5rem;
 }
@@ -214,8 +242,16 @@ footer {
 .site-footer {
   display: flex;
   align-items: center;
+  gap: 0.75rem;
   border-top: 1px solid var(--cor-borda);
   color: var(--cor-texto-suave);
+}
+
+.site-footer img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  flex: 0 0 auto;
 }
 
 .site-footer p {

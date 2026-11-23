@@ -1,4 +1,6 @@
 ---
+import Icon from './Icon.astro';
+
 interface Props {
   project: {
     name: string;
@@ -28,5 +30,10 @@ const { project } = Astro.props;
       <li><span class="tech-chip">{technology}</span></li>
     ))}
   </ul>
-  {project.link && <a href={project.link}>{project.name}</a>}
+  {project.link && (
+    <a class="project-access" href={project.link} aria-label={`Acessar ${project.name}`}>
+      Acessar sistema
+      <Icon name="arrow-right" />
+    </a>
+  )}
 </article>
