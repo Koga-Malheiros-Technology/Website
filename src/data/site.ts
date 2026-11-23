@@ -37,7 +37,7 @@ export const site: Site = {
     name: 'KM Technology',
     headline: 'Soluções de tecnologia sob medida',
     about:
-      'Somos uma software house dedicada a entregar soluções de tecnologia sob medida, com atenção à segurança, à qualidade e às necessidades de cada cliente.',
+      'Somos uma Software House dedicada a entregar soluções de tecnologia sob medida, com atenção à segurança, à qualidade e às necessidades de cada cliente.',
   },
   values: [
     {
