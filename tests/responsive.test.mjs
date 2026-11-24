@@ -13,6 +13,15 @@ test('print do sistema é contido no card', () => {
   assert.match(rule, /display:\s*block/);
 });
 
+test('cards de sistemas mantêm o mesmo tamanho com print ou ícone', () => {
+  const media = css.match(/\.project-media\s*\{[^}]*\}/)?.[0] ?? '';
+  assert.match(media, /height:\s*150px/);
+  const stretch = css.match(/section > ul > li > article\s*\{[^}]*\}/)?.[0] ?? '';
+  assert.match(stretch, /flex:\s*1/);
+  assert.match(css, /article\s*\{[^}]*flex-direction:\s*column[^}]*\}/);
+  assert.match(css, /\.project-card\s*\{[^}]*min-height:\s*400px[^}]*\}/);
+});
+
 test('grades crescem de uma para duas e três colunas', () => {
   const list = css.match(/section > ul\s*\{[^}]*\}/)?.[0];
   assert.match(list, /grid-template-columns:\s*minmax\(0,\s*1fr\)/);

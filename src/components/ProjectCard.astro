@@ -8,21 +8,28 @@ interface Props {
     technologies: string[];
     image?: string;
     imageAlt?: string;
+    imageIcon?: boolean;
     link?: string;
+    linkLabel?: string;
   };
 }
 
 const { project } = Astro.props;
 ---
-<article>
-  {project.image && (
-    <img
-      src={project.image}
-      alt={project.imageAlt ?? project.name}
-      loading="lazy"
-      decoding="async"
-    />
-  )}
+<article class="project-card">
+  <div class="project-media">
+    {project.image ? (
+      <img
+        src={project.image}
+        alt={project.imageAlt ?? project.name}
+        class:list={project.imageIcon ? 'project-icon' : 'project-image'}
+        loading="lazy"
+        decoding="async"
+      />
+    ) : (
+      <Icon name="mark" />
+    )}
+  </div>
   <h3>{project.name}</h3>
   <p>{project.description}</p>
   <ul>
@@ -31,8 +38,8 @@ const { project } = Astro.props;
     ))}
   </ul>
   {project.link && (
-    <a class="project-access" href={project.link} aria-label={`Acessar ${project.name}`}>
-      Acessar sistema
+    <a class="project-access" href={project.link} aria-label={`${project.linkLabel ?? 'Acessar sistema'}: ${project.name}`}>
+      {project.linkLabel ?? 'Acessar sistema'}
       <Icon name="arrow-right" />
     </a>
   )}

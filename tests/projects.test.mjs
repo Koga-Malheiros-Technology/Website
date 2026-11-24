@@ -31,3 +31,24 @@ test('KM Recupera aparece em Sistemas com print e link', () => {
   assert.equal(png.readUInt32BE(16), 2878);
   assert.equal(png.readUInt32BE(20), 1800);
 });
+
+test('OrganizadorXML aparece com ícone próprio e link para os releases no GitHub', () => {
+  const html = readHtml();
+  const css = readFileSync(new URL('../src/styles/global.css', import.meta.url), 'utf8');
+  const icon = readFileSync(new URL('../public/images/organizador-xml.png', import.meta.url));
+  assert.match(html, /OrganizadorXML/);
+  assert.match(html, /src="\/images\/organizador-xml\.png"/);
+  assert.match(html, /alt="Ícone do OrganizadorXML"/);
+  assert.deepEqual([...icon.subarray(0, 8)], [137, 80, 78, 71, 13, 10, 26, 10]);
+  assert.equal(icon.readUInt32BE(16), 512);
+  assert.equal(icon.readUInt32BE(20), 512);
+  assert.match(
+    html,
+    /href="https:\/\/github\.com\/Koga-Malheiros-Technology\/Organizador-XMLS\/releases"/,
+  );
+  assert.match(html, /aria-label="Baixar no GitHub: OrganizadorXML"/);
+  assert.match(html, />Baixar no GitHub/);
+  for (const tech of ['Python', 'Tkinter', 'PyInstaller']) assert.ok(html.includes(tech));
+  const rule = css.match(/article img\.project-icon\s*\{[^}]*\}/)?.[0] ?? '';
+  assert.match(rule, /object-fit:\s*contain/);
+});

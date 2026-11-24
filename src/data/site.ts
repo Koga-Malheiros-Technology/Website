@@ -14,7 +14,9 @@ export interface Project {
   technologies: string[];
   image?: string;
   imageAlt?: string;
+  imageIcon?: boolean;
   link?: string;
+  linkLabel?: string;
 }
 
 export interface Site {
@@ -84,6 +86,17 @@ export const site: Site = {
       image: '/images/recupera.png',
       imageAlt: 'Tela dos módulos do sistema KM Recupera',
       link: 'https://recupera.kmtechnology.com.br',
+    },
+    {
+      name: 'OrganizadorXML',
+      description:
+        'Organiza XMLs de NF-e, NFC-e (SAT/CFE) e NFS-e em pastas por ano, mês e categoria, com simulação, relatórios e reversão.',
+      technologies: ['Python', 'Tkinter', 'PyInstaller'],
+      image: '/images/organizador-xml.png',
+      imageAlt: 'Ícone do OrganizadorXML',
+      imageIcon: true,
+      link: 'https://github.com/Koga-Malheiros-Technology/Organizador-XMLS/releases',
+      linkLabel: 'Baixar no GitHub',
     },
   ],
   contact: { email: '', whatsapp: '' },
